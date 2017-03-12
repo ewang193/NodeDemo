@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CERBERUS</title>
+    <link href="/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/components/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/css/cronos_styles.css" rel="stylesheet">
+    <script src="/components/jquery/jquery.min.js"></script>
+    <script src="/js/CERBERUSClientConfig.js"></script>
+</head>
+<body>
+<!-- Fixed navbar -->
+<div class="pos-f-t">
+  <nav class="navbar navbar-light navbar-static-top bg-faded" style="margin-bottom:0;">
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#headerMenu">
+      &#9776;
+    </button>
+    <div class="no-nav-header">
+      <div class="container-fluid">
+        <img src="/img/PwC_logo.png" />
+        <a class="navbar-brand" id="logo-container" href="/CERBERUS/">CERBERUS</a>
+        <div class="collapse navbar-toggleable-xs pull-xs-right" id="headerMenu">
+
+          <ul class="nav navbar-nav">
+            <li class="nav-item btn-group">
+              <a class="dropdown-toggle nav-link" type="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>{{username}}</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right user_dropdown" aria-labelledby="dropdownMenu1">
+                <a class="dropdown-item" href="/CERBERUS/logout"> <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                <!--<div class="dropdown-divider"></div>-->
+                <!--{{#if otherRoles.length}}-->
+                <a class="dropdown-item" href="#"><b>Current Role:</b>{{primaryRole.role_name}}</a> {{#each otherRoles}}
+                <a class="dropdown-item" href="#"><b>Log in as:</b>{{this.role_name}}</a> {{/each}}
+                <!--{{/if}}-->
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Custom Left Menu - START -->
+<div class="side-menu-panel">
+  <div class="master-side-nav">
+    <div class="navigation">
+      <ul class="mainmenu">
+        <li key="home"><a href="/CERBERUS/" class=""><i class="fa fa-home fa-1x" aria-hidden="true"></i> Home</a></li>
+        <li key="vendorSetup"><a href="/CERBERUS/vendorSetup" class=""><i class="fa fa-question-circle fa-1x" aria-hidden="true"></i> Vendor Setup</a></li>
+        <li key="survey"><a href="/CERBERUS/survey/index" class=""><i class="fa fa-question-circle fa-1x" aria-hidden="true"></i> Survey</a></li>
+        <li key="workflows"><a href="/CERBERUS/workflow/workflows" class=""><i class="fa fa-arrows fa-1x" aria-hidden="true"></i> Workflows</a>
+          <ul class="submenu">
+            <li><a href="/CERBERUS/workflow/Workflows">Attach Workflow</a></li>
+            <li><a href="/CERBERUS/WorkflowProcess">Manage Workflow</a></li>
+          </ul>
+        </li>
+        <li key="search"><a href="#" class="custom_dropdown"><i class="fa fa-search fa-1x" aria-hidden="true"></i> Search </a>
+          <ul class="submenu">
+            <li><a href="/CERBERUS/search/searchCases">Cases</a></li>
+            <li><a href="/CERBERUS/search/searchVendor">Vendor</a></li>
+          </ul>
+        </li>
+        <li key="dashboard"><a href="/CERBERUS/dashboard" class=""><i class="fa fa-tachometer fa-1x" aria-hidden="true"></i> Dashboard</a></li>
+        <li key="dashboard"><a href="/CERBERUS/myAssignedWork" class=""><i class="fa fa-tachometer fa-1x" aria-hidden="true"></i> My Assigned Work</a></li>
+        <li key="barChartShow"><a href="/CERBERUS/barChartShow" class=""><i class="fa fa-bar-chart fa-1x" aria-hidden="true">Bar Chart Show</i></a></li>
+      </ul>
+    </div>
+  </div>
+  <a href="javascript:void(0);" class="panel-arrow show" style="display:block;"><img src="/img/show_side_menu.png" /></a>
+</div>
+
+
+  <div class="container-fluid">
+    hello template
+    {{{body}}}
+  </div>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      &copy; 2016 PricewaterhouseCoopers LLP. <a class="orange-text" href="">Full Legal</a>
+    </div>
+  </footer>
+
+  <!-- hidden area-->
+  <!--<div class="hidden-area">-->
+    <!--<input type="hidden" value="{{readOnly}}" id="readOnly" />-->
+  <!---->
+  <!--</div>-->
+
+  <script src="/js/tether.min.js"></script>
+  <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/ie10-viewport-bug-workaround.js"></script>
+  <script type="text/javascript" src="/js/init.js"></script>
+
+</body>
+</html>

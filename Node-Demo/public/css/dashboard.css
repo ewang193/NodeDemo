@@ -1,0 +1,120 @@
+.donut-container{
+  /*height:600px;*/
+  width:100%;
+  position: relative;
+}
+
+.bar-container{
+  height:400px;
+  width:100%;
+  background-color: #fff;
+}
+
+#svg_outer {
+  position:absolute;
+  /*top: -2rem;*/
+}
+
+#svg_inner {
+  position:absolute;
+  /*top: -2rem;*/
+  pointer-events: none;
+}
+
+#svg_inner .slices{
+  pointer-events: auto;
+}
+
+.tick>text{
+  font-size: 0.7rem;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  z-index: 1100;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar:hover,
+.slices .slice:hover{
+  cursor: pointer;
+  opacity: .7;
+}
+
+#current-filter{
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.donut-container>svg:nth-child(1) {
+  position: absolute;
+}
+
+.dataTables_info{
+  float: left;
+}
+
+#caseSearchlist_length {
+  float: left;
+  padding-left: 10px;
+  padding-top: 8px !important;
+}
+
+#caseSearchlist_filter {
+  float: right;
+  margin-top:10px;
+}

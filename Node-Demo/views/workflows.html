@@ -1,0 +1,176 @@
+<head>
+  <link href="/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"/>
+</head>
+<input type="hidden" id="CRONOS_PGUID" value="{{CRONOS_PGUID}}"/>
+<input type="hidden" id="CRONOS_API_URL" value="{{CRONOS_API_URL}}"/>
+<input type="hidden" id="UGUID" value="{{UGUID}}"/>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h5 class="workflow_title">Select Workflow Process</h5>
+    </div>
+    <div class="col-xs-12 col-md-4 pull-right text-xs-right">
+      <button href="javascript:void(0)" onclick="createWorkflow()" class="right btn orange-btn">Create Workflow</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+      <div class="page_box_content workflow_block">
+        <table id="workflowTable" class="table table-sm table-striped table-hover" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th style="width:30%;">Name</th>
+              <th>Total Points</th>
+              <th>Total Cases</th>
+              <th style="width:20%; text-align:center;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+      <div class="page_box_title">
+        Filter Selection
+      </div>
+      <div class="page_box_content search_form">
+        <form class="">
+          <div class="col-xs-12 col-md-12 col-lg-3">
+            <fieldset class="form-group">
+              <label>Select filter to add</label>
+              <select class="form-control" id="selectFilter">
+                <option disabled selected value> -- Choose your option -- </option>
+                {{#each filterList}}
+                <option value="{{this.field_type}}" data-validation="{{this.validation_type}}" data-tsearch="{{this.search_table}}" data-sfield="{{this.search_field}}" data-operator="{{this.operators}}">
+                  {{this.filter_name}}
+                </option>
+                {{/each}}
+              </select>
+            </fieldset>
+          </div>
+          <div class="col-xs-12 col-md-12 col-lg-3" id="enterValue" style="display:none;">
+            <fieldset class="form-group">
+              <div class="" id="showOperator" style="display:none;">
+                <label>Select Operator</label>
+                <select class="form-control" id="operatorList"></select>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12 col-md-12 col-lg-3" id="freeText" style="display:none;">
+            <fieldset class="form-group">
+              <label>Select Filter Type</label>
+              <input type="text" id="freeTextInput" class="form-control boxed inputBox" placeholder="Enter Text">
+            </fieldset>
+          </div>
+          <div class="col-xs-12 col-md-12 col-lg-3" id="staticText" style="display:none;">
+            <fieldset class="form-group">
+              <label>Enter/Select Value</label>
+              <select id="staticTextInput" name="staticTextInput" class="form-control">
+                <option disabled selected value> -- Select Filter -- </option>
+              </select>
+            </fieldset>
+          </div>
+          <div class="col-xs-12 col-md-12 col-lg-3">
+            <a class="btn btn-primary orange-btn margin-top-btn" href="javascript:void(0)" onclick="addToFilterTable()">Add</a>
+          </div>
+
+        </form>
+
+      </div>
+      <br/>
+      <div class="page_box_title">
+        Search/Manage filters
+      </div>
+      <div class="page_box_content search_form manage_filters_block">
+        <fieldset class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-3">
+          <select class="form-control" id="selectSavedSearch">
+            <option disabled selected value> -- Select Saved Search -- </option>
+            {{#each savedSearchCase}}
+            <option data-json="{{toJSON this.filters}}">{{this.sname}}</option>
+            {{/each}}
+          </select>
+        </fieldset>
+        <div class="col-xs-12 col-md-12 col-lg-3">
+          <a class="btn btn-primary orange-btn" onclick="saveSearch()">Save search</a>
+          <a class="btn btn-primary orange-btn text-xs-left" onclick="performSearch()">Find</a>
+        </div>
+        <table id="filterAdded" class="table table-sm table-striped table-hover dataTable" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th style="width:30%;">Filter Type</th>
+              <th style="width:50%;">Value</th>
+              <th style="width:20%; text-align:center;">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="dynFilter">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="searchResultsTable">
+    <div class="col-xs-12">
+      <div class="page_box_title">
+        Search results
+      </div>
+      <div class="page_box_content">
+        <button id="assignWorkflowButton" class="btn right btn disabled orange-btn" style="position:inherit">Associate Selected</button>
+        <div id="searchResults_wrapper" class="dataTables_wrapper no-footer">
+          <table id="searchResults" class="table table-sm table-striped table-hover" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th style="width:24%;">Name</th>
+                <th>Case Number</th>
+                <th>Case Date</th>
+                <th>Case Type</th>
+                <th>Case Basis</th>
+                <th>Case Status</th>
+                <th>Case Amount</th>
+                <th>
+                  <input type="checkbox" class="filled-in" id="selectAllCases" name="selectCase"/>
+                  <label for="selectAllCases">Actions</label>
+                </th>
+              </tr>
+            </thead>
+            <!-- Modal Structure -->
+            <div id="deleteModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4>Delete Workflow</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p class="center_text">Are you sure you want to delete this workflow? </p>
+                    <input type="text" id="delete-flow-id" hidden="hidden"/>
+                  </div>
+                  <div class="modal-footer">
+                    <button href="#!" onclick="deleteWorkflow()" class="btn orange-btn">Delete</button>
+                    <button class="btn cancel-btn" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Delete Modal -->
+            <tbody>
+
+            </tbody>
+          </table>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="div-edit-workflow" style="display:none">
+  <form method="post" action="workflowDesigner" id="form-edit-workflow">
+    <input name="flowUID" type="text" id="input-edit-workflowUID">
+  </form>
+</div>
+
+<script type="text/javascript" src="/js/workflow/controllers/index.js"></script>
+<script type="text/javascript" src="/js/workflowCaseSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>

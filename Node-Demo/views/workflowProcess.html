@@ -1,0 +1,96 @@
+<head>
+  <link href="/CRONOS/public/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"/>
+  <link href="/CRONOS/public/css/workflow.css" type="text/css" rel="stylesheet"/>
+</head>
+<input type="hidden" id="CRONOS_PGUID" value="{{CRONOS_PGUID}}"/>
+<input type="hidden" id="CRONOS_API_URL" value="{{CRONOS_API_URL}}"/>
+<input type="hidden" id="UGUID" value="{{UGUID}}"/>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h5 class="workflow_title">Select Workflow Process</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+      <div class="page_box_content workflow_block">
+        <div class="form-group">
+          <table id="workflowProcessTable" class="table table-sm table-striped table-hover" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th style="width:30%;">Name</th>
+                <th>Total Points</th>
+                <th>Current Point</th>
+                <th>Select</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+            </tfoot>
+          </table>
+        </div>
+        <div class="caseBtn">
+          <a class="btn btn-primary orange-btn">Get Case</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="searchResultsTable">
+    <div class="col-xs-12">
+      <div class="page_box_title row" id="nextEvent" style="line-height:100%">
+        <div class="col-xs-8">
+          Search Case Results
+        </div>
+        <div class="col-xs-2">
+          <select class="processSelect removeFilter"><option>Select Event</option></select><div style="clear:both"></div>
+        </div>
+        <div class="col-xs-2">
+          <button id="assignButton" class="btn right btn orange-btn">Assign Selected</button>
+        </div>
+      </div>
+      <div class="page_box_content">
+        <div id="searchResults_wrapper" class="dataTables_wrapper no-footer">
+          <table id="searchCaseResult" class="table table-sm table-striped table-hover" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>Case Number</th>
+                <th>Name</th>
+                <th>Case Date</th>
+                <th>Case Type</th>
+                <th>Case Status</th>
+                <th>Case Amount</th>
+                <th><input type="checkbox" id="checkbox-selectAll"/>Action</th>
+              </tr>
+            </thead>
+            <div id="deleteModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4>Delete Workflow</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p class="center_text">Are you sure you want to delete this workflow?</p>
+                    <input type="text" id="delete-flow-id" hidden="hidden"/>
+                  </div>
+                  <div class="modal-footer">
+                    <button href="#!" onclick="deleteWorkflow()" class="btn orange-btn">Delete</button>
+                    <button class="btn cancel-btn" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <tbody>
+            </tbody>
+          </table>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/CRONOS/public/js/workflow.js"></script>
+<script type="text/javascript" src="/CRONOS/public/js/workflow/controllers/workflowProcess.js"></script>
+<script type="text/javascript" src="/CRONOS/public/js/workflowCaseSearch.js"></script>
+<script type="text/javascript" src="/CRONOS/public/js/jquery.dataTables.min.js"></script>

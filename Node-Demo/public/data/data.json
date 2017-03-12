@@ -1,0 +1,28 @@
+[{
+  "State": "AL",
+  "Under 5 Years": 310504,
+  "5 to 13 Years": 552339,
+  "14 to 17 Years": 259034,
+  "18 to 24 Years": 450818,
+  "25 to 44 Years": 1231572,
+  "45 to 64 Years": 1215966,
+  "65 Years and Over": 641667
+},{
+  "State": "AK",
+  "Under 5 Years": 52083,
+  "5 to 13 Years": 85640,
+  "14 to 17 Years": 42153,
+  "18 to 24 Years": 74257,
+  "25 to 44 Years": 198724,
+  "45 to 64 Years": 183159,
+  "65 Years and Over": 50277
+}]
+
+//[{"vendor_type":"Insurance","risk_score":["7","2","8","7"],"low_risk":1,"medium_risk":2,"high_risk":1},
+//  {"vendor_type":"Marketing","risk_score":["9","6","7","8","5","7","10","7","2","2","2"],"low_risk":3,"medium_risk":5,"high_risk":3},
+//  {"vendor_type":"Operations","risk_score":["9","7","5","7","2","7","3"],"low_risk":2,"medium_risk":4,"high_risk":1},
+//  {"vendor_type":"Security","risk_score":["7","9","5","5","5","4","7"],"low_risk":1,"medium_risk":5,"high_risk":1},
+//  {"vendor_type":"Service","risk_score":["7","4","6"],"low_risk":1,"medium_risk":2,"high_risk":0},
+//  {"vendor_type":"Suppliers","risk_score":["3","7","8","7","9"],"low_risk":1,"medium_risk":2,"high_risk":2},
+//  {"vendor_type":"Travel","risk_score":["9","8","6","9","3","8","10"],"low_risk":1,"medium_risk":1,"high_risk":5},
+//  {"vendor_type":"Utilities","risk_score":["2","3","2","3","7","2","6","2"],"low_risk":6,"medium_risk":2,"high_risk":0}]

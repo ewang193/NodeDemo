@@ -1,0 +1,17 @@
+{
+  "name": "raid-app",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "draw2d": "^6.1.53",
+    "jquery-ui": "^1.12.0",
+    "font-awesome":"^4.6.3",
+    "datatables.net": "^1.10.12",
+    "JsBarcode": "jsbarcode#^3.3.20"
+  }
+}
