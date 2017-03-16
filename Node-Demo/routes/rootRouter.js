@@ -17,6 +17,8 @@ var dashboard = require('./controller/dashboard');
 // var myAssignedWork = require('./controller/myAssignedWork');
 var barChartShow = require('./controller/barChartShow');
 
+var caseManagementPortal = require('./controller/caseManagementPortal');
+
 var responseRender = require(cerberus.responseRender);
 
 
@@ -64,6 +66,8 @@ router.use('/dashboard', dashboard);
  * bar chart show
  */
 router.use('/barChartShow', barChartShow);
+
+router.use('/caseManagementPortal', caseManagementPortal);
 
 module.exports = router;
 

@@ -1,0 +1,224 @@
+/*@media only screen and (min-width: 993px)*/
+.row {
+    width: calc(98vw);
+    margin-left:-59px;
+    box-sizing: inherit;
+}
+
+.row .col{
+    padding: 0 0.75em;
+}
+
+.row .col.l3 {
+     width: 25%;
+     margin-left: auto;
+     left: auto;
+     right: auto;
+    float: left;
+ }
+
+.row .col.l6 {
+    width: 50%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    float: left;
+}
+
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+    z-index: 1100;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+polyline{
+    opacity: .3;
+    stroke: black;
+    stroke-width: 2px;
+    fill: none;
+}
+
+#donutChart {
+    position:relative;
+    width: 100%;
+    /*border:1px solid blue;*/
+}
+
+#outer {
+    position:absolute;
+    /*border:1px solid;*/
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*#donutChart>svg:nth-child(1){*/
+#svg_vis{
+    /*border: 1px solid red;*/
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /*pointer-events: none;*/
+}
+
+/*#svg_vis circle {*/
+/*pointer-events: auto;*/
+/*}*/
+
+
+#forAmountSlider{
+    /*border:1px solid;*/
+    /*height:10px;*/
+    /*width: 20%;*/
+    float:left;
+    /*position: absolute;*/
+    top:3%;
+    font-weight:bold;
+}
+
+#amountSlider {
+    border:1px solid;
+    height:10px;
+    width: 20%;
+    float:left;
+    position: absolute;
+    top:4%;
+}
+
+#amount {
+    border: 0;
+    color: #f6931f;
+    font-weight: bold;
+    width:16%;
+    position: absolute;
+    top: 0.5%;
+    left: 7.5%;
+
+}
+
+
+#forRiskSlider {
+    position:absolute;
+    top:0%;
+    right:17%;
+}
+
+#riskSlider{
+    border:1px solid;
+    height:10px;
+    width: 20%;
+    /*float:right;*/
+    position: absolute;
+    right:0%;
+    top:4%;
+}
+
+#risk {
+    border: 0;
+    color: #f6931f;
+    font-weight: bold;
+    width:6%;
+    position: absolute;
+    top: 0.5%;
+    right: 11%;
+}
+
+/*.p0_pieChart {*/
+/*transform:translate(398.765625,280.347656);*/
+/*}*/
+
+.tooltip {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    /* background: #222222; */
+    background: #fff;
+    opacity: .9;
+    /* color: #eeeeee; */
+    color: black;
+    padding: 10px;
+    width: 300px;
+    font-size: 1.25em;
+    z-index: 10;
+}
+
+.tooltip .title {
+    font-size: 13px;
+}
+
+.tooltip .name {
+    font-weight:bold;
+}
+
+#donutChart_div {
+    position:absolute;
+    width:100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.left {
+    float: left !important;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.right {
+    float: right !important;
+}
+
+.right-align{
+    text-align: right;
+}
+
+.orange_btn.right_align_btn {
+    margin: 5px 10px 0 0;
+}
+
+.orange_btn.small {
+    padding: 6px 10px;
+    height: 30px;
+    line-height: normal;
+    font-size: 14px;
+}

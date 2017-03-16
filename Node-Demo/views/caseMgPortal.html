@@ -1,0 +1,274 @@
+<link href="/css/jquery-ui.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/components/datatables/media/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/font-awesome.css"/>
+<link href="/css/node_app.css" rel="stylesheet"/>
+<link href="/components/materialize/bin/materialize.css"/>
+<link href="/css/search.css" rel="stylesheet"/>
+<input type="hidden" id="SearchName" value="{{searchName}}">
+<div class="section no-pad-bot" id="index-banner">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <div class="col s12 m12 l3" style="display: none;">
+                <div class="accordian_block">
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header black-title active">
+                                Batch List
+                            </div>
+                            <div class="collapsible-body">
+                                <div class="s12 collapsible-padding">
+                                    <!--<div id="batchList_wrapper" class="dataTables_wrapper form-inline dt-material no-footer">-->
+                                        <!--<div class="top">-->
+                                            <!--<div class="pull-right">-->
+                                                <!--<div id="batchList_filter" class="dataTables_filter">-->
+                                                    <!--<label>-->
+                                                        <!--Search:-->
+                                                        <!--<input type="search" class="form-control input-sm" placeholder aria-controls="batchList">-->
+                                                    <!--</label>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <table id="batchList" class="bordered striped highlight responsive-table "
+                                               cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Batch ID</th>
+                                                <th>Date</th>
+                                                <th># Cases</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+
+                                    <!--</div>-->
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--style="transition: all 0.5s ease;"-->
+            <div class="col s12 m12 l12" id="caseManagementPortal">
+                <div class="block_container">
+                    <div class="block_content" style="height: 100%">
+                        <div class="col s12 m12 l3">
+                            <!--<div id="alertList_wrapper" class="dataTables_wrapper form-inline dt-material no-footer">-->
+                                <!--<div class="top"></div>-->
+                            <table id="alertList" class="bordered striped highlight responsive-table " cellspacing="0" width="100%">
+                                <thead><tr>
+                                    <!--<th></th>-->
+                                    <th>Alert Type</th>
+                                    <th># Cases</th>
+                                </tr></thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!--</div>-->
+
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <div id="donutChart">
+                                <label id="forAmountSlider" for="amount">Amount:</label>
+                                <input type="text" id="amount" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                                <div id="amountSlider"></div>
+                                <label id="forRiskSlider" for="risk">Risk:</label>
+                                <input type="text" id="risk" readonly style="border:0;color:#f6931f;font-weight:bold;">
+                                <div id="riskSlider"></div>
+                                <svg id="donutChart_div">
+
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col s12 m12 l3">
+                            <table id="entityList" class="bordered striped highlight responsive-table " cellspacing="0" width="100%">
+                                <thead><tr>
+                                    <!--<th></th>-->
+                                    <th>Entity Name</th>
+                                    <th># Transactions</th>
+                                </tr></thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col s12 m12 l12" id='searchResultsTable'>
+            <div class="">
+                <div class="block_container">
+                    <div class="block_title black-title">
+                        <div class="left left-align">
+                            <h5>Case List</h5>
+                        </div>
+                        <div class="right-align right">
+                            <a class="waves-effect waves-light btn orange_btn small right_align_btn"
+                               href="#userAssignment" id="assignButton">Assign</a>
+                            <a class="waves-effect waves-light btn orange_btn small right_align_btn"
+                               href="#workflowAttachment" id="attachButton">Workflow</a>
+                        </div>
+                    </div>
+                    <div class="block_content">
+                        <table id="searchResults" class="mdl-data-table bordered striped highlight responsive-table"
+                               cellspacing="0" width="100%">
+                            <thead>
+                            <tr></tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="progress" id="progress-search" style="display: none;">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id='unaSearch' style="display:none;">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <button href="javascript:void(0)" id="btn-performUnaSearch" class="right btn">Search</button>
+        </div>
+        </br>
+        </br>
+        <button type="button" data-toggle="modal" data-id="1" data-target="userAssignment" id="assignButton2"
+                class="btn btn-primary orange-btn modal-trigger right btn disabled">Assign Selected
+        </button>
+        <table id="unaSearchResults" class="striped highlight" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>oGuid</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Assignment -->
+<div id="userAssignment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+                <h4 class="modal-title">Select User to Assign Case</h4>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row">
+                        <div class="s12">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col s12 m6 l3">
+                                        Select role to refine search
+                                    </div>
+                                    <div class="col s12 m6 l3">
+                                        <select class="browser-default" id="selectRole">
+                                            <option disabled selected value> -- Select Role --</option>
+                                            {{#each getRoleList}}
+                                            <option value="{{this.rguid}}" data-validation=""
+                                                    data-rguid="{{this.rguid}}">{{this.role_name}}
+                                            </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="page_box_content">
+                                <table id="userRole" class="striped highlight" cellspacing="0" width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Role</th>
+                                        <th>Select</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id='userTable'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="waves-effect waves-light btn orange_btn right_align_btn" href="javascript:;" id="assignCase">Assign</a>
+                <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-light cancel_btn btn"
+                   data-dismiss="modal">Cancel</a>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- Modal Workflow -->
+<div id="workflowAttachment" class="modal modal_md">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Select workflow to attach case</h4>
+        </div>
+        <div class="modal-body">
+            <table id="workflowTable" class="mdl-data-table bordered striped highlight responsive-table" cellspacing="0"
+                   width="100%">
+                <thead>
+                <tr>
+                    <th style="width:30%;">Name</th>
+                    <th>Total Points</th>
+                    <th>Total Cases</th>
+                    <th>Select</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a class="waves-effect waves-light btn orange_btn right_align_btn" href="javascript:;" id="attachWorkflow">Attach</a>
+            <a href="javascript:void(0)"
+               class="modal-action modal-close waves-effect waves-light cancel_btn btn">Cancel</a>
+        </div>
+    </div>
+</div>
+<script src="/js/modernizr-2.0.6.min.js"></script>
+<script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/d3.v3.min.js"></script>
+<script src="/js/d3.tip.v0.6.3.js"></script>
+<script src="/js/crossfilter.v1.min.js"></script>
+<script src="/js/d3pie_forAML.js"></script>
+<script src="/js/bullet.js"></script>
+<script src="/js/underscore.js"></script>
+<script src="/js/queue.v1.min.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/TweenMax.min.js"></script>
+<script src="/js/topojson.js"></script>
+<script src="/js/tools.js"></script>
+
+
+<script src="/js/plugins.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/CustomTooltip.js"></script>
+<script src="/js/d3.layout.min.js"></script>
+<script src="/js/d3.geom.min.js"></script>
+<!--<script src="/{{app_name}}/public/javascripts/bubbleChart.js"></script>-->
+<!--<script src="/{{app_name}}/public/javascripts/test.js"></script>-->
+
+<script type="text/javascript" src="/js/caseMgPortal.js"></script>

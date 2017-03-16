@@ -912,11 +912,11 @@ thead th:last-child {
   height: 16px;
 }
 
-#assignButton,
-#assignWorkflowButton,
-.add_newrole {
-  margin: 2px !important;
-}
+/*#assignButton,*/
+/*#assignWorkflowButton,*/
+/*.add_newrole {*/
+  /*margin: 2px !important;*/
+/*}*/
 
 #assignButton {
   float: right;
